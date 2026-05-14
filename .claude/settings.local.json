@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($claude = Get-FileHash \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\CLAUDE.md\" -Algorithm SHA256; $agents = Get-FileHash \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\AGENTS.md\" -Algorithm SHA256; if \\($claude.Hash -eq $agents.Hash\\) { \"OK identical SHA256=$\\($claude.Hash.Substring\\(0,16\\)\\)...\" } else { \"MISMATCH claude=$\\($claude.Hash\\) agents=$\\($agents.Hash\\)\" })",
+      "PowerShell($c = Get-Content \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\CLAUDE.md\" -Raw; $a = Get-Content \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\AGENTS.md\" -Raw; \"claude len=$\\($c.Length\\) agents len=$\\($a.Length\\) diff=$\\($c.Length - $a.Length\\)\"; if \\($c.Length -eq $a.Length\\) { for \\($i=0; $i -lt $c.Length; $i++\\) { if \\($c[$i] -ne $a[$i]\\) { \"first diff at index $i : claude='$\\($c[$i]\\)'\\($\\([int]$c[$i]\\)\\) agents='$\\($a[$i]\\)'\\($\\([int]$a[$i]\\)\\)\"; break } } })",
+      "PowerShell($c = Get-Content \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\CLAUDE.md\" -Raw; $a = Get-Content \"C:\\\\Users\\\\buben\\\\Desktop\\\\MeshForge\\\\AGENTS.md\" -Raw; $diffs = @\\(\\); for \\($i=0; $i -lt $c.Length; $i++\\) { if \\($c[$i] -ne $a[$i]\\) { $diffs += $i } }; \"total differing chars: $\\($diffs.Count\\)\"; \"ranges:\"; $start = $diffs[0]; $prev = $start; foreach \\($d in $diffs[1..\\($diffs.Count-1\\)]\\) { if \\($d -ne $prev + 1\\) { \"  $start..$prev\"; $start = $d }; $prev = $d }; \"  $start..$prev\")"
+    ]
+  }
+}
